@@ -1,9 +1,6 @@
 import users from '@/pages/api/auth/users'
 import axios from 'axios'
 import React from 'react'
-import { useToasts } from 'react-toast-notifications'
-import Button from './Button'
-import ValueInput from './ValueInput'
 import Modal from './Modal'
 import { DeliveryState, postRequest, putRequest } from './state'
 import { useQueryClient, useMutation } from 'react-query'
@@ -36,7 +33,6 @@ React.useEffect(()=>{
         [e.target.id]: e.target.value
     })
   }
-  const { addToast } = useToasts()
 
   const [formType, setFormType] = React.useState("")
   const handleFormType = (e: React.ChangeEvent<HTMLSelectElement>) => {
@@ -45,10 +41,7 @@ React.useEffect(()=>{
   const cache = useQueryClient()
       const { mutate } = useMutation(postRequest, {
       onSuccess(data) {
-        addToast(data?.message, {
-                        appearance: "success",
-                        autoDismiss: true,
-                      });
+        alert(data?.message);
         cache.invalidateQueries();
       },
     });
@@ -82,10 +75,7 @@ React.useEffect(()=>{
                 status: e.target.value,
               })
               .then(res=>{
-                addToast(res.data.message, {
-        appearance: 'success',
-        autoDismiss: true,
-      })
+                alert(res.data.message)
               })
             }}  id={'_id'} name={'formType'} className='w-full rounded-lg bg-[#F0EFFF] placeholder-[#A7A3FF] text-[#A7A3FF] px-6 py-5 outline-none' required>
               <option value="">Please Select Status</option>
@@ -107,10 +97,7 @@ React.useEffect(()=>{
                 index: user?.states?.slice(-1)[0].index + 1
               })
               .then(res=>{
-                addToast(res.data.message, {
-        appearance: 'success',
-        autoDismiss: true,
-      })
+                alert(res.data.message)
               })
             }} id={'_id'} name={'formType'} className='w-full rounded-lg bg-[#F0EFFF] placeholder-[#A7A3FF] text-[#A7A3FF] px-6 py-5 outline-none' required>
               <option value="">Please Select State</option>

@@ -5,10 +5,8 @@ import LoginInput from '@/components/LoginInput'
 import Button from '@/components/Button'
 import Link from 'next/link'
 import axios from 'axios'
-import { useToasts } from 'react-toast-notifications'
 
 export default function Login() {
-  const { addToast } = useToasts()
   const [state, setState] = React.useState({
     email: "",
     password: ""
@@ -23,10 +21,7 @@ export default function Login() {
     const {email, password} = state
     axios.post("/api/auth/login", state)
     .then(res=>{
-      addToast(res.data.message, {
-        appearance: 'success',
-        autoDismiss: true,
-      })
+      alert(res.data.message)
     })
   }
   return (

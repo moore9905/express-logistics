@@ -1,7 +1,6 @@
 import users from '@/pages/api/auth/users'
 import axios from 'axios'
 import React, { cache } from 'react'
-import { useToasts } from 'react-toast-notifications'
 import Button from './Button'
 import LoginInput from './LoginInput'
 import Modal from './Modal'
@@ -33,7 +32,6 @@ export default function AddUser({users, open, setOpen}) {
         [e.target.id]: e.target.value
     })
   }
-  const { addToast } = useToasts()
 
   const [formType, setFormType] = React.useState("")
   const handleFormType = (e: React.ChangeEvent<HTMLSelectElement>) => {
@@ -42,10 +40,7 @@ export default function AddUser({users, open, setOpen}) {
   const cache = useQueryClient()
       const { mutate } = useMutation(postRequest, {
       onSuccess(data) {
-        addToast(data?.message, {
-                        appearance: "success",
-                        autoDismiss: true,
-                      });
+        alert(data?.message);
         cache.invalidateQueries();
       },
     });
