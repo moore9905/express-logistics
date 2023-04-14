@@ -6,6 +6,7 @@ import LoginInput from './LoginInput'
 import Modal from './Modal'
 import { DeliveryState, postRequest, putRequest } from './state'
 import { useMutation, useQueryClient } from 'react-query'
+import { useToasts } from 'react-toast-notifications'
 
 export default function AddUser({users, open, setOpen}) {
   
@@ -37,10 +38,14 @@ export default function AddUser({users, open, setOpen}) {
   const handleFormType = (e: React.ChangeEvent<HTMLSelectElement>) => {
     setFormType(e.target.value)
   }
+  const { addToast } = useToasts()
   const cache = useQueryClient()
       const { mutate } = useMutation(postRequest, {
       onSuccess(data) {
-        alert(data?.message);
+        addToast(data?.message, {
+        appearance: 'success',
+        autoDismiss: true,
+      })
         cache.invalidateQueries();
       },
     });

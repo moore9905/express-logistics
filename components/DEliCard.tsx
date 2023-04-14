@@ -5,9 +5,11 @@ import { CgSpinnerTwo } from 'react-icons/cg'
 import { FaTimesCircle } from 'react-icons/fa'
 import { AiOutlineCheckCircle } from 'react-icons/ai'
 import { deleteRequest } from './state'
+import { useToasts } from 'react-toast-notifications'
 
 export default function DEliCard({data, open, edit}) {
   const router = useRouter()
+  const { addToast } = useToasts()
   const isPath = router.pathname==="/[token]" ? true : false
   const [state, setState] = React.useState([...data?.states])
   React.useEffect(()=>{
@@ -93,7 +95,10 @@ export default function DEliCard({data, open, edit}) {
                   url: `/api/${data?._id}`
                 }).then(res=>{
                   console.log(res, res?.data)
-                  alert(res?.message)
+                  addToast(data?.message, {
+        appearance: 'success',
+        autoDismiss: true,
+      })
                 })
               }}>
                 Delete

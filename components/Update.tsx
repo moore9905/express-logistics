@@ -4,6 +4,7 @@ import React from 'react'
 import Modal from './Modal'
 import { DeliveryState, postRequest, putRequest } from './state'
 import { useQueryClient, useMutation } from 'react-query'
+import { useToasts } from 'react-toast-notifications'
 
 export default function UpdateDelivery({user, open, setOpen}) {
     console.log(user, user?.states?.slice(-1)[0].state)
@@ -38,10 +39,14 @@ React.useEffect(()=>{
   const handleFormType = (e: React.ChangeEvent<HTMLSelectElement>) => {
     setFormType(e.target.value)
   }
+  const { addToast } = useToasts()
   const cache = useQueryClient()
       const { mutate } = useMutation(postRequest, {
       onSuccess(data) {
-        alert(data?.message);
+        addToast(data?.message, {
+        appearance: 'success',
+        autoDismiss: true,
+      });
         cache.invalidateQueries();
       },
     });
@@ -75,7 +80,10 @@ React.useEffect(()=>{
                 status: e.target.value,
               })
               .then(res=>{
-                alert(res.data.message)
+                addToast(res.data?.message, {
+        appearance: 'success',
+        autoDismiss: true,
+      })
               })
             }}  id={'_id'} name={'formType'} className='w-full rounded-lg bg-[#F0EFFF] placeholder-[#A7A3FF] text-[#A7A3FF] px-6 py-5 outline-none' required>
               <option value="">Please Select Status</option>
@@ -97,7 +105,10 @@ React.useEffect(()=>{
                 index: user?.states?.slice(-1)[0].index + 1
               })
               .then(res=>{
-                alert(res.data.message)
+                addToast(res.data?.message, {
+        appearance: 'success',
+        autoDismiss: true,
+      })
               })
             }} id={'_id'} name={'formType'} className='w-full rounded-lg bg-[#F0EFFF] placeholder-[#A7A3FF] text-[#A7A3FF] px-6 py-5 outline-none' required>
               <option value="">Please Select State</option>
