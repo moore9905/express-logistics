@@ -61,7 +61,7 @@ console.log(email, first_name, last_name, personal_code)
 				"Variables": {
       "username": first_name + " " +last_name,
       "code": personal_code,
-      "link": "Tracking Link"
+      "link": "https://tracking-dun.vercel.app/"
 				  }
 			}
 		]
