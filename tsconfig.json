@@ -1,0 +1,23 @@
+{
+  "compilerOptions": {
+    "target": "es5",
+    "lib": ["dom", "dom.iterable", "esnext"],
+    "allowJs": true,
+    "skipLibCheck": true,
+    "strict": false,
+    "forceConsistentCasingInFileNames": true,
+    "noEmit": true,
+    "esModuleInterop": true,
+    "module": "esnext",
+    "moduleResolution": "node",
+    "resolveJsonModule": true,
+    "isolatedModules": true,
+    "jsx": "preserve",
+    "incremental": true,
+    "paths": {
+      "@/*": ["./*"]
+    }
+  },
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", "lib/mongodb.js", "pages/api/auth/create.js", "pages/api/models/Shipment.js", "pages/api/models/State.js", "pages/api/auth/addShipment.js", "pages/api/auth/login.js", "pages/api/auth/state.js", "pages/api/auth/users.js", "pages/api/del/[id].js", "pages/api/models/Users.js", "pages/api/deliveries.js", "pages/api/update_state.js"],
+  "exclude": ["node_modules"]
+}
