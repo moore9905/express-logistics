@@ -18,6 +18,6 @@
       "@/*": ["./*"]
     }
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", "lib/mongodb.js", "pages/api/auth/create.js", "pages/api/models/Shipment.js", "pages/api/models/State.js", "pages/api/auth/addShipment.js", "pages/api/auth/login.js", "pages/api/auth/state.js", "pages/api/auth/users.js", "pages/api/del/[id].js", "pages/api/models/Users.js", "pages/api/deliveries.js", "pages/api/update_state.js"],
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", "lib/mongodb.js", "pages/api/auth/create.js", "pages/api/models/Shipment.js", "pages/api/models/State.js", "pages/api/auth/addShipment.js", "pages/api/auth/login.js", "pages/api/auth/state.js", "pages/api/auth/users.js", "pages/api/del/[id].js", "pages/api/models/Users.js", "pages/api/deliveries.js", "pages/api/update_state.js", "pages/api/update_status.js", "pages/api/[delete].js"],
   "exclude": ["node_modules"]
 }
