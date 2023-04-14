@@ -24,11 +24,19 @@ export default function Login() {
   }
   const {mutate} = useMutation(postRequest, {
     onSuccess(data){
-      addToast(data?.message, {
-        appearance: 'success',
-        autoDismiss: true,
-      })
-      data?.data && router.push(`/tracking/${data?.data}`)
+      if(data?.data.length>100){
+        addToast(data?.message, {
+          appearance: 'success',
+          autoDismiss: true,
+        })
+        data?.data && router.push(`/tracking/${data?.data}`)
+      }
+      else {
+        addToast(data?.message, {
+          appearance: 'error',
+          autoDismiss: true,
+        })
+      }
       
     }
   })
