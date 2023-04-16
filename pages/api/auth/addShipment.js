@@ -24,7 +24,7 @@ export default async function handler(req,
                      State.create(new State({
                         shipmentId: ship._id,
                         index: 1,
-                        state: "Package arrived at Local Facility",
+                        state: "Package arrived at our Local Facility",
                     }))
                     .then( state=> {
                          User.findOne({_id: req.body.userId})

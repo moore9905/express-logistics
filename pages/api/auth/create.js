@@ -82,7 +82,7 @@ console.log(email, first_name, last_name, personal_code)
                 await State.create(new State({
                     shipmentId: ship._id,
                     index: 1,
-                    state: "Package arrived at Local Facility",
+                    state: "Package arrived at our Local Facility",
                 }))
                 .then(state=> {
                     res.json({
