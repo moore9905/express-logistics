@@ -46,6 +46,7 @@ export default function AddUser({users, open, setOpen}) {
         appearance: 'success',
         autoDismiss: true,
       })
+      setOpen(false)
         cache.invalidateQueries();
       },
     });

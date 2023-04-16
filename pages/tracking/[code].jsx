@@ -113,7 +113,10 @@ export default function Home() {
               }  
             <div className="flex items-center gap-4">
 
-                <img src="/loc.png" alt="" />
+                {
+                del?.states.slice(-1)[0]?.state==="Cancelled" ?
+                <FaTimesCircle className="text-red-700 h-[38px] w-[38px] " /> : del?.states.slice(-1)[0]?.state==="Delivered" ? <AiOutlineCheckCircle className="text-green-700 h-[38px] w-[38px]" /> : <img src="/loc.png" alt="" />
+              }
                 <div className="flex flex-col gap-1">
                 <div className="font-bold text-[16px] leading-[19px] text-[#232323]">{del?.states.slice(-1)[0]?.state}</div>
                 {/* <div className="font-normal text-xs">Rd. Santa Ana, Illinois 85486 </div> */}

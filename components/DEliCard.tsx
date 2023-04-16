@@ -74,8 +74,11 @@ export default function DEliCard({data, open, edit}) {
                 ))
               }  
             <div className="flex items-center gap-4">
-
-                <img src="/loc.png" alt="" />
+              {
+                data?.states.slice(-1)[0]?.state==="Cancelled" ?
+                <FaTimesCircle className="text-red-700 h-[38px] w-[38px] " /> : data?.states.slice(-1)[0]?.state==="Delivered" ? <AiOutlineCheckCircle className="text-green-700 h-[38px] w-[38px]" /> : <img src="/loc.png" alt="" />
+              }
+                {/* <img src="/loc.png" alt="" /> */}
                 <div className="flex flex-col gap-1">
                 <div className="font-bold text-[16px] leading-[19px] text-[#232323]">{data?.states.slice(-1)[0]?.state}</div>
                 {/* <div className="font-normal text-xs">Rd. Santa Ana, Illinois 85486 </div> */}
@@ -84,13 +87,13 @@ export default function DEliCard({data, open, edit}) {
             </div>
             <hr className="bg-[#ececec] my-5" />
             <div className="grid grid-cols-2 rounded-b-[12px]">
-              <div className="flex w-full items-center justify-center text-blue-700 font-bold cursor-pointer" onClick={()=>{
+              <button disabled={data?.status==="Cancelled" || data?.status==="Delivered"} className="flex w-full items-center justify-center text-blue-700 font-bold cursor-pointer" onClick={()=>{
                 open(true)
                 edit(data?._id)
               }}>
                 Edit
-              </div>
-              <div className="flex w-full items-center justify-center text-red-700 font-bold cursor-pointer" onClick={async()=>{
+              </button>
+              <button className="flex w-full items-center justify-center text-red-700 font-bold cursor-pointer" onClick={async()=>{
                 await deleteRequest({
                   url: `/api/${data?._id}`
                 }).then(res=>{
@@ -102,7 +105,7 @@ export default function DEliCard({data, open, edit}) {
                 })
               }}>
                 Delete
-              </div>
+              </button>
             </div>
           </div>
   )

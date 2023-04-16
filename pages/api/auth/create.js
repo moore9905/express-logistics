@@ -73,7 +73,7 @@ console.log(email, first_name, last_name, personal_code)
             await Shipment.create(new Shipment({
                 userId: user._id,
                 number: `EV-${number}`,
-                status: "Pending",
+                status: "Delivering",
                 product: req.body.product,
                 start_location: req.body.start_location, 
                 end_location: req.body.end_location, 

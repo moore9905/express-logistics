@@ -47,6 +47,7 @@ React.useEffect(()=>{
         appearance: 'success',
         autoDismiss: true,
       });
+      setOpen(false)
         cache.invalidateQueries();
       },
     });
@@ -75,16 +76,10 @@ React.useEffect(()=>{
                 ...state,
                 status: e.target.value
               })
-              axios.post('/api/update_status', {
+              mutate({url:'/api/update_status', data:{
                 _id: user?._id,
                 status: e.target.value,
-              })
-              .then(res=>{
-                addToast(res.data?.message, {
-        appearance: 'success',
-        autoDismiss: true,
-      })
-              })
+              }})
             }}  id={'_id'} name={'formType'} className='w-full rounded-lg bg-[#F0EFFF] placeholder-[#A7A3FF] text-[#A7A3FF] px-6 py-5 outline-none' required>
               <option value="">Please Select Status</option>
               {
@@ -99,17 +94,11 @@ React.useEffect(()=>{
           </div>
           <div className="flex flex-col pt-5 pb-9 gap-6">
             <select onChange={(e:React.ChangeEvent<HTMLSelectElement>)=>{
-              axios.post('/api/update_state', {
+              mutate({url:'/api/update_state', data:{
                 shipmentId: user?._id,
                 state: e.target.value,
                 index: user?.states?.slice(-1)[0].index + 1
-              })
-              .then(res=>{
-                addToast(res.data?.message, {
-        appearance: 'success',
-        autoDismiss: true,
-      })
-              })
+              }})
             }} id={'_id'} name={'formType'} className='w-full rounded-lg bg-[#F0EFFF] placeholder-[#A7A3FF] text-[#A7A3FF] px-6 py-5 outline-none' required>
               <option value="">Please Select State</option>
               {

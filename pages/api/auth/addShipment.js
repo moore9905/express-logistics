@@ -14,7 +14,7 @@ export default async function handler(req,
         const number = OtpGenerator.generate(10, { upperCaseAlphabets: false, specialChars: false, lowerCaseAlphabets: false, digits: true })
         const shipment = {
             ...req.body,
-            status: "Pending",
+            status: "Delivering",
             number: `EV-${number}`
         }
         
