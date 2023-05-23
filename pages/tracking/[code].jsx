@@ -38,7 +38,6 @@ export default function Home() {
   React.useEffect(()=>{
     setUser(code ? jwtDecode(code) : null)
   },[code])
-  console.log(user)
  
   const {data} = useQuery([user?._id], async ()=> getRequest({url:`/api/user/${user?._id}`}))
   const [dels, setDels] = React.useState(data?.data)

@@ -34,11 +34,9 @@ const mailjet = Mailjet.apiConnect(
 	})
 request
 	.then(() => {
-		console.log("Done")
 		return true
 	})
 	.catch(() => {
-		console.log("failed")
 		return false
 	})
 }

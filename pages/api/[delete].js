@@ -4,10 +4,7 @@ import User from "./models/Users";
 
 export default async function handler(req, res){
     const _id = req.query.delete
-    console.log(_id)
     await dbConnect()
-    
-    console.log(req.body)
     await Shipment.findByIdAndDelete({_id: req.query.delete}).exec()
     .then(async ship=>{
         res.json({

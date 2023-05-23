@@ -97,7 +97,6 @@ export default function DEliCard({data, open, edit}) {
                 await deleteRequest({
                   url: `/api/${data?._id}`
                 }).then(res=>{
-                  console.log(res, res?.data)
                   addToast(data?.message, {
         appearance: 'success',
         autoDismiss: true,

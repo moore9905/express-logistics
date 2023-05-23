@@ -7,7 +7,6 @@ import { useQueryClient, useMutation } from 'react-query'
 import { useToasts } from 'react-toast-notifications'
 
 export default function UpdateDelivery({user, open, setOpen}) {
-    console.log(user, user?.states?.slice(-1)[0].state)
     const [state, setState] = React.useState({
         product: user?.product,
         start_location: user?.start_location,

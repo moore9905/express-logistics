@@ -5,7 +5,6 @@ import mongoose from "mongoose"
 export default async function handler(req, res){
     const {id} = req.query
     const code = new mongoose.Types.ObjectId(id)
-    console.log(code)
     await dbConnect()
     await Shipment.aggregate([
         {
