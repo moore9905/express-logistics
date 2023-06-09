@@ -6,6 +6,7 @@ import { FaTimesCircle } from 'react-icons/fa'
 import { AiOutlineCheckCircle } from 'react-icons/ai'
 import { deleteRequest } from './state'
 import { useToasts } from 'react-toast-notifications'
+import Barcode from 'react-barcode';
 
 export default function DEliCard({data, open, edit}) {
   const router = useRouter()
@@ -34,6 +35,31 @@ export default function DEliCard({data, open, edit}) {
               <div className="">
                 <motion.img drag src="/truck.png" alt="" />
               </div>
+            </div>
+            <hr className="bg-[#ececec] my-5" />
+            <div className="flex gap-5 items-center">
+              <div className="font-normal text-xs text-[#484a58]">Tracking Code:</div>
+              <div className="font-normal text-xs text-[#484a58]">{data?.user?.personal_code}</div>
+            </div>
+            <hr className="bg-[#ececec] my-5" />
+            <div className="flex gap-5 items-center">
+              <div className="font-normal text-xs text-[#484a58]">Origin/Departure:</div>
+              <div className="font-normal text-xs text-[#484a58]">{data?.start_location}</div>
+            </div>
+            <hr className="bg-[#ececec] my-5" />
+            <div className="flex gap-5 items-center">
+              <div className="font-normal text-xs text-[#484a58]">Destination:</div>
+              <div className="font-normal text-xs text-[#484a58]">{data?.end_location}</div>
+            </div>
+            <hr className="bg-[#ececec] my-5" />
+            <div className="flex gap-5 items-center">
+              <div className="font-normal text-xs text-[#484a58]">Sender:</div>
+              <div className="font-normal text-xs text-[#484a58]">{data?.sender}</div>
+            </div>
+            <hr className="bg-[#ececec] my-5" />
+            <div className="flex gap-5 items-center">
+              <div className="font-normal text-xs text-[#484a58]">Receiver:</div>
+              <div className="font-normal text-xs text-[#484a58]">{data?.user?.first_name} {data?.user?.last_name}</div>
             </div>
             <hr className="bg-[#ececec] my-5" />
             <div className="flex items-center gap-5">
@@ -98,14 +124,18 @@ export default function DEliCard({data, open, edit}) {
                   url: `/api/${data?._id}`
                 }).then(res=>{
                   addToast(data?.message, {
-        appearance: 'success',
-        autoDismiss: true,
-      })
+                    appearance: 'success',
+                    autoDismiss: true,
+                  })
                 })
               }}>
                 Delete
               </button>
             </div>
+                <hr className="bg-[#ececec] my-5" />
+                <div className="w-full flex justify-center">
+                  <Barcode value={data?.user?.personal_code} width={2} />
+                </div>
           </div>
   )
 }

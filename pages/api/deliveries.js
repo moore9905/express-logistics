@@ -31,6 +31,7 @@ export default async function handler(req, res){
                 product: 1,
                 start_location: 1,
                 end_location: 1,
+                sender: 1,
                 status: 1,
                 user: "$user",
                 states: "$states"

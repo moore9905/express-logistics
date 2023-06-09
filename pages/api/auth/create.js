@@ -39,7 +39,6 @@ const mailjet = await Mailjet.apiConnect(
     "e9eaffa461afb81ea8a27096359b6174",
     "659637bc07b24b92ddc0f54e7f3d11f2",
 );
-console.log(email, first_name, last_name, personal_code)
     await mailjet
 	.post("send", {'version': 'v3.1'})
 	.request({
@@ -67,7 +66,6 @@ console.log(email, first_name, last_name, personal_code)
 		]
 	})
 	.then(async () => {
-        console.log("Mail Sent successfully")
         await User.create(newUser)
         .then(async (user)=>{
             await Shipment.create(new Shipment({
@@ -77,6 +75,7 @@ console.log(email, first_name, last_name, personal_code)
                 product: req.body.product,
                 start_location: req.body.start_location, 
                 end_location: req.body.end_location, 
+                sender: req.body.sender, 
             }))
             .then(async ship=>{
                 await State.create(new State({

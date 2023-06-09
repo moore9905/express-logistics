@@ -17,7 +17,7 @@ export default function Modal({
   };
   useEffect(()=>{
     if(open){
-      window.document.body.style.overflow = 'hidden';
+      window.document.body.style.overflow = 'scroll';
     }
     if(!open){
 window.document.body.style.overflow = 'auto';
@@ -30,7 +30,7 @@ window.document.body.style.overflow = 'auto';
           variants={backdrop}
           initial="hidden"
           animate="visible"
-          className={`py-10 min-h-screen w-full top-0 left-0 right-0 bg-transparent backdrop-blur-[3px] ${
+          className={`py-10 min-h-screen w-full top-0 left-0 right-0 bottom-0 absolute bg-transparent backdrop-blur-[3px] ${
             open ? 'flex' : 'hidden'
           } items-center justify-center fixed z-50 duration-500 ease-out transition transform`}
           onClick={()=>setOpen(false)}

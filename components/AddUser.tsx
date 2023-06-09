@@ -19,6 +19,7 @@ export default function AddUser({users, open, setOpen}) {
     initials: "",
     location: "",
         number: "",
+        sender: "",
         product: "",
         start_location: "",
         end_location: "",
@@ -58,6 +59,7 @@ export default function AddUser({users, open, setOpen}) {
     initials: `${state.first_name.slice(0,1)}${state.last_name.slice(0,1)}`,
     location: state.location,
       product: state.product,
+      sender: state.sender,
       start_location: state.start_location,
       end_location: state.end_location,
       state: DeliveryState[0]
@@ -66,6 +68,7 @@ export default function AddUser({users, open, setOpen}) {
       url:"/api/auth/addShipment", data:{
       product: state.product,
       start_location: state.start_location,
+      sender: state.sender,
       end_location: state.end_location,
     userId: state._id
     }
@@ -114,7 +117,9 @@ export default function AddUser({users, open, setOpen}) {
             }
               <hr className='bg-[#F0EFFF]' />
               <LoginInput placeholder={"Product To Be Shipped"} id={"product"} change={handleChange} type={""}/>
+              <LoginInput placeholder={"Sender's Name"} id={"sender"} change={handleChange} type={""}/>
               <LoginInput placeholder={"Delivery Start Location"} id={"start_location"} change={handleChange} type={""}/>
+              <LoginInput placeholder={"Delivery Destination"} id={"end_location"} change={handleChange} type={""}/>
           </div>
           <Button
             value="Start Delivery"

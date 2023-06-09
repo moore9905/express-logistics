@@ -8,7 +8,6 @@ export default async function handler(req, res){
         _id,
         status, start_location, product
     } = req.body
-    console.log(req.body)
     await Shipment.findOneAndUpdate({_id}, {
                   $set: {status, start_location, product}
               }, {

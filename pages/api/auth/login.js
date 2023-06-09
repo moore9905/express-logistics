@@ -22,7 +22,8 @@ export default async function handler(
                     last_name: user.last_name,
                     initials: user.initials,
                     location: user.location,
-                    isClient: true
+                    isClient: true,
+                    tracking_code
                 }
                 
                 res.status(200).json({message: "Login Successful", data: jwt.sign(payload, key) })

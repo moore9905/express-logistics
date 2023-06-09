@@ -5,6 +5,7 @@ const ShipmentSchema = new mongoose.Schema({
     userId: ObjectId,
         number: String,
         product: String,
+        sender: String,
         status: {
             type: String,
             default: "Pending"

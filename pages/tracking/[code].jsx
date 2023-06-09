@@ -10,6 +10,8 @@ import { motion } from "framer-motion";
 import { FaTimesCircle } from "react-icons/fa";
 import { AiOutlineCheckCircle } from "react-icons/ai";
 import Redirect from "../redirect";
+import Barcode from 'react-barcode';
+
 export default function Home() {
   const router = useRouter()
   // const [state, setState] = React.useState([...data?.states])
@@ -73,6 +75,31 @@ export default function Home() {
               </div>
             </div>
             <hr className="bg-[#ececec] my-5" />
+            <div className="flex gap-5 items-center">
+              <div className="font-normal text-xs text-[#484a58]">Tracking Code:</div>
+              <div className="font-normal text-xs text-[#484a58]">{user?.tracking_code}</div>
+            </div>
+            <hr className="bg-[#ececec] my-5" />
+            <div className="flex gap-5 items-center">
+              <div className="font-normal text-xs text-[#484a58]">Origin/Departure:</div>
+              <div className="font-normal text-xs text-[#484a58]">{del?.start_location}</div>
+            </div>
+            <hr className="bg-[#ececec] my-5" />
+            <div className="flex gap-5 items-center">
+              <div className="font-normal text-xs text-[#484a58]">Destination:</div>
+              <div className="font-normal text-xs text-[#484a58]">{del?.end_location}</div>
+            </div>
+            <hr className="bg-[#ececec] my-5" />
+            <div className="flex gap-5 items-center">
+              <div className="font-normal text-xs text-[#484a58]">Sender:</div>
+              <div className="font-normal text-xs text-[#484a58]">{del?.sender}</div>
+            </div>
+            <hr className="bg-[#ececec] my-5" />
+            <div className="flex gap-5 items-center">
+              <div className="font-normal text-xs text-[#484a58]">Receiver:</div>
+              <div className="font-normal text-xs text-[#484a58]">{user?.first_name} {user?.last_name}</div>
+            </div>
+            <hr className="bg-[#ececec] my-5" />
             <div className="flex items-center gap-5">
               <div className="font-normal text-[#484a58]">Status:</div>
                 { del?.status==="Pending" &&
@@ -122,6 +149,10 @@ export default function Home() {
                 </div>
             </div>
             </div>
+            <hr className="bg-[#ececec] my-5" />
+                <div className="w-full flex justify-center">
+                  <Barcode value={user?.tracking_code} width={2} />
+                </div>
           </div>
             ))
           }
