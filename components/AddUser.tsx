@@ -64,16 +64,6 @@ export default function AddUser({users, open, setOpen}) {
       end_location: state.end_location,
       state: DeliveryState[0]
     }
-    formType==="Existing" ? mutate({
-      url:"/api/auth/addShipment", data:{
-      product: state.product,
-      start_location: state.start_location,
-      sender: state.sender,
-      end_location: state.end_location,
-    userId: state._id
-    }
-    })
-    :
     mutate({
       url:"/api/auth/create", data
     })
@@ -87,34 +77,14 @@ export default function AddUser({users, open, setOpen}) {
             Add to existing or new client
           </div>
           <div className="flex flex-col pt-5 pb-9 gap-6">
-            <select onChange={handleFormType} id={'formType'} name={'formType'} className='w-full rounded-lg bg-[#F0EFFF] placeholder-[#A7A3FF] text-[#A7A3FF] px-6 py-5 outline-none' required>
-              <option value="">Please Select Client type</option>
-              <option value="New Client">New Client</option>
-              <option value="Existing">Existing</option>
-            </select>
-            {
-              formType==="New Client" && <>
+           
               <LoginInput placeholder={"Email Address"} id={"email"} change={handleChange} type={"email"}/>
               <div className="grid grid-cols-2 gap-2">
               <LoginInput placeholder={"First Name"} id={"first_name"} change={handleChange} type={""}/>
               <LoginInput placeholder={"Last Name"} id={"last_name"} change={handleChange} type={""}/>
               </div>
               <LoginInput placeholder={"Client's Address or Location"} id={"location"} change={handleChange} type={""}/>
-              </>
-            }
-            {
-              formType==="Existing" && <select onChange={(e:React.ChangeEvent<HTMLSelectElement>)=>{setState({
-                ...state,
-                _id: e.target.value
-              })}} id={'_id'} name={'formType'} className='w-full rounded-lg bg-[#F0EFFF] placeholder-[#A7A3FF] text-[#A7A3FF] px-6 py-5 outline-none' required>
-              <option value="">Please Choose Client</option>
-              {
-                users?.map((user, i)=>(
-                  <option key={i} value={user._id}>{user.first_name} {user.last_name}</option>
-                ))
-              }
-            </select>
-            }
+           
               <hr className='bg-[#F0EFFF]' />
               <LoginInput placeholder={"Product To Be Shipped"} id={"product"} change={handleChange} type={""}/>
               <LoginInput placeholder={"Sender's Name"} id={"sender"} change={handleChange} type={""}/>

@@ -42,10 +42,11 @@ export default function Home() {
   },[code])
  
   const {data} = useQuery([user?._id], async ()=> getRequest({url:`/api/user/${user?._id}`}))
-  const [dels, setDels] = React.useState(data?.data)
+  const [del, setDels] = React.useState(data?.data)
   React.useEffect(()=>{
     setDels(data?.data)
   },[data?.data])
+  console.log(del)
   return (
     <>
     {
@@ -61,14 +62,12 @@ export default function Home() {
         <div className=" font-bold text-md pb-5">Welcome back {user?.first_name} {user?.last_name}</div>
         <div className=" font-bold text-xl pb-5">Ongoing Delivery</div>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-5">
-          {
-            dels?.map((del, i)=>(
-          <div className="p-5 flex flex-col bg-white shadow-md rounded-[12px]" key={i}>
+          <div className="p-5 flex flex-col bg-white shadow-md rounded-[12px]" >
             <div className="flex items-center justify-between">
               <div className="flex flex-col">
                 <div className="text-[#B0B0B0] font-semibold text-sm pb-[6px]">Shipment number</div>
-                <div className="pb-[10px] font-bold text-lg text-[#232323">{del.number}</div>
-                <div className="font-normal text-sm text-[#484a58]">{del.product}</div>
+                <div className="pb-[10px] font-bold text-lg text-[#232323">{del?.number}</div>
+                <div className="font-normal text-sm text-[#484a58]">{del?.product}</div>
               </div>
               <div className="">
                 <motion.img drag src="/truck.png" alt="" />
@@ -154,9 +153,7 @@ export default function Home() {
                   <Barcode value={user?.tracking_code} width={2} />
                 </div>
           </div>
-            ))
-          }
-        </div>
+                </div>
       </div>
     </div>
     </div>

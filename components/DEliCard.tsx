@@ -7,6 +7,7 @@ import { AiOutlineCheckCircle } from 'react-icons/ai'
 import { deleteRequest } from './state'
 import { useToasts } from 'react-toast-notifications'
 import Barcode from 'react-barcode';
+import { useQueryClient } from 'react-query'
 
 export default function DEliCard({data, open, edit}) {
   const router = useRouter()
@@ -123,7 +124,7 @@ export default function DEliCard({data, open, edit}) {
                 await deleteRequest({
                   url: `/api/${data?._id}`
                 }).then(res=>{
-                  addToast(data?.message, {
+                  addToast(res?.message, {
                     appearance: 'success',
                     autoDismiss: true,
                   })

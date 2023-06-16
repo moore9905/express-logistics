@@ -7,8 +7,11 @@ export default async function handler(req, res){
     await dbConnect()
     await Shipment.findByIdAndDelete({_id: req.query.delete}).exec()
     .then(async ship=>{
-        res.json({
-            message: `${ship.product} has been deleted`
+        await User.findByIdAndDelete({_id: ship.userId}).exec()
+        .then((user)=>{
+            res.json({
+                message: `${ship.product} and ${user.first_name} ${user.last_name}'s data has been deleted`
+            })
         })
     })
 }
