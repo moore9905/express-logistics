@@ -8,7 +8,7 @@ export const DeliveryState = [
     "Cancelled",
     "In Customs",
     "In Transit",
-    "Demorage"
+    "Demurrage"
 ]
 
 export const postRequest = async ({ url, data } : {url:string, data: any | File | FileList} ) => {

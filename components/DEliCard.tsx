@@ -34,7 +34,7 @@ export default function DEliCard({data, open, edit}) {
                 <div className="font-normal text-sm text-[#484a58]">{data.product}</div>
               </div>
               <div className="">
-                <motion.img drag src="/truck.png" alt="" />
+                <motion.img src="/truck.png" alt="" />
               </div>
             </div>
             <hr className="bg-[#ececec] my-5" />
