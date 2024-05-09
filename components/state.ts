@@ -1,6 +1,12 @@
 import axios from "axios"
 
 export const DeliveryState = [
+  "Departed from facility",
+  "Clearance processing completed - Import",
+  "Arrived at sort facility",
+  "In clearance processing - Import",
+  "International flight has arrived",
+  "International flight has departed",
   "Package arrived at our Local Facility",
     "Package has left Courier Facility",
     "Out for Delivery",
