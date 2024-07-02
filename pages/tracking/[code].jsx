@@ -55,7 +55,7 @@ export default function Home() {
       backgroundImage: "url(/map.png)"
     }}>
       <div className="min-h-screen bg-transparent backdrop-blur-[5px]  w-full pt-8 md:px-10 px-6">
-      <Link href="/">
+      <Link href="/login">
         <img src='/logo.png' alt='' className='' />
       </Link>
       <div className="pt-7">
