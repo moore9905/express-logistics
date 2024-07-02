@@ -60,7 +60,7 @@ export default function Login() {
             <div className="grid grid-cols-1 md:grid-cols-2 md:gap-20 md:px-20 lg:px-40">
                 <div className="md:flex flex-col hidden">
                     <div className=" font-semibold text-[50px] leading-[75px]">Sign In to</div>
-                    <div className=" font-medium text-[35px] leading-[52px]">Tracking</div>
+                    <div className=" font-medium text-[35px] leading-[52px]">YEMEN EXPRESS LOGISTICS SERVICES</div>
                     <div className="flex items-start pt-14">
               <div className="">If you don’t have an account register <br />
                 You can   Register here !</div>
